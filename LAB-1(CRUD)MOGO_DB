@@ -1,0 +1,54 @@
+db.socialMedia.insertMany([
+  {
+    postID: 1,
+    likes: 120,
+    comments: ["Nice post!", "Loved it", "Very informative"],
+    page_visits: 1000
+  },
+  {
+    postID: 2,
+    likes: 45,
+    comments: ["Awesome", "Keep posting"],
+    page_visits: 320
+  },
+  {
+    postID: 3,
+    likes: 300,
+    comments: ["🔥🔥🔥", "Best content ever", "Amazing work"],
+    page_visits: 2500
+  }
+])
+
+
+db.socialMedia.find()
+
+db.socialMedia.find({ postID: 1 })
+
+db.socialMedia.find(
+  { postID: 2 },
+  { _id: 0, comments: 1 }
+)
+
+db.socialMedia.updateOne(
+  { postID: 1 },
+  { $inc: { likes: 1 } }
+)
+
+db.socialMedia.deleteMany({})
+
+
+db.socialMedia.aggregate([
+
+  {
+
+    $project: {
+
+      postID: 1,
+
+      total_comments: { $size: "$comments" }
+
+    }
+
+  }
+
+])
