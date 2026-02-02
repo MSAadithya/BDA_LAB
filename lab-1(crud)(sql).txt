@@ -1,0 +1,41 @@
+use socialmedia ;
+
+create table socialmedia (
+postID int,
+likes int,
+comments JSON,
+pageVisits int,
+PRIMARY KEY(postID)
+);
+
+
+insert into socialmedia values(100,120,json_array('very good','excellent','sleep'),110);
+insert into socialmedia values(110,20,json_array('good','excellent','sleep'),10);
+insert into socialmedia values(900,23420,json_array('fanatstic','super','mind'),1340);
+
+
+/* select commands */
+select * from socialmedia;
+
+select postID,comments from socialmedia where likes=1120;
+
+
+/* update commands */
+
+
+UPDATE SOCIALMEDIA set likes=96 where postID=1000;
+select * from socialmedia;
+
+SELECT * FROM SOCIALMEDIA WHERE JSON_CONTAINS(comments, "good");
+
+
+/* delete commands */
+
+delete from socialmedia where pageVisits=1110;
+
+/* aggregate */
+
+select count(pageVisits) FROM SOCIALMEDIA;
+
+select SUM(pageVisits) FROM SOCIALMEDIA;
+
